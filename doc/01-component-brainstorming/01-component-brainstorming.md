@@ -1,12 +1,10 @@
 # Portfolio Part 1: Component Brainstorming
 
-- **Name**: <!-- TODO: fill with first and last name (e.g., Brutus Buckeye) then delete this comment -->
-- **Dot Number**: <!-- TODO: fill with OSU dot number (e.g., buckeye.17) then delete this comment -->
-- **Due Date**: <!-- TODO: fill with due date and time (e.g., 10/17 @ 3:10 PM EST) then delete this comment -->
+- **Name**: Brittany Arias Medina
+- **Dot Number**: ariasmedina.1
+- **Due Date**: 09/19 @ 12:40 PM EST
 
 ## Assignment Overview
-
-<!-- TODO: read the assignment overview then delete this comment -->
 
 The overall goal of the portfolio project is to have you design and implement
 your own OSU component. There are no limits to what you choose to design and
@@ -29,8 +27,6 @@ implement.
 
 ## Assignment Checklist
 
-<!-- TODO: browse the checklist then delete this comment -->
-
 To be sure you have completed everything on this assignment, we have littered
 this document with TODO comments. You can browse all of them in VSCode by
 opening the TODOs window from the sidebar. The icon looks like a tree and will
@@ -52,8 +48,6 @@ to the tree diagram (you may remove this one as well):
 
 ## Assignment Learning Objectives
 
-<!-- TODO: read the assignment learning objectives then delete this comment -->
-
 Without learning objectives, there really is no clear reason why a particular
 assessment or activity exists. Therefore, to be completely transparent, here is
 what we're hoping you will learn through this particular aspect of the portfolio
@@ -66,8 +60,6 @@ project. Specifically, students should be able to:
    discipline
 
 ## Assignment Rubric: 10 Points
-
-<!-- TODO: read the assignment rubric then delete this comment -->
 
 Again, to be completely transparent, most of the portfolio project, except the
 final submission, is designed as a formative assessment. Formative assessments
@@ -106,23 +98,15 @@ Below is further rationale/explanation for the rubric items above:
 > brainstorming. Plus it helps us get to know you better! Feel free to share
 > images in this section.
 
-<!-- TODO: briefly talk about your interests then delete this comment.
-Also, protip: you can preview what your response looks like by hitting
-the magnifying glass icon in the upper-right corner or pressing CTRL+K and
-then V. This kind of button combination is called a chord, for whatever
-reason -->
+ I am majoring in Data Analytics with a Computational specilization and a focus on cyber security. My goal is to work in a career where I can use data to detect threats and protect systems. In my free time, I enjoy video games and puzzles, since they challenge me and can give a rewarding sense of accomplishment.
 
 ## Assignment
-
-<!-- TODO: read the assignment section then delete this comment -->
 
 As previously stated, you are tasked with brainstorming 3 possible components.
 To aid you in this process, we have provided [some example components][example-components]
 that may help you in your brainstorming. All of these components were made at
 some point by one of your peers, so you should feel confident that you can
 accomplish any of them.
-
-<!-- TODO: browse the list of possible projects then delete this comment -->
 
 There is no requirement that you use any of the components listed above.
 If you want to model something else, go for it! Very common early object
@@ -131,8 +115,6 @@ etc. Make of this whatever seems interesting to you, and keep in mind that
 you're just brainstorming right now. You do not have to commit to anything.
 
 ### Example Component
-
-<!-- TODO: review this example component then delete this comment -->
 
 To help you brainstorm a few components, we've provided an example below of a
 component you already know well: NaturalNumber. We highly recommend that you
@@ -200,20 +182,34 @@ will likely refine your design to make your implementation easier to use.
 
 > Please use this section to share your designs.
 
-- Component Design #1: <!-- TODO: give component a name then delete this comment -->
+- Component Design #1: `GameInventoy`
   - **Description**:
-    - <!-- TODO: describe your component then delete this comment -->
+    - Models a player or party inventoy for a survival/adventure game. The kernel provides the minimum function to for adding, removal, and viewing. The secondary interface will give behaviors for consumption, capacity, and stacking.
   - **Kernel Methods**:
-    - <!-- TODO: list kernel methods then delete this comment -->
+    - `void insert (String item, int qty)` : adds the quanitity of item into the inventory.
+    - `int remove(String item, int qty)` : removes the quantity of items requested and returns the number of items removed.
+    - `int quantity(String item)` : return the quanitiy of item.
+    - `int size()` : returns the number of unique items in inventory.
+    - `void clear()`: removes all items in inventoy
   - **Secondary Methods**:
-    - <!-- TODO: list secondary methods then delete this comment -->
+    - `boolean useItem(String item)`: removes one of the item and returns true if used.
+    - `boolean hasItem(String item)` : returns weather the items is in the inventory or not.
+    - `int removeAll(String item)`: removes all of the item from the inventory and returns number of items removed.
+    - `void addItem(String item, int qty)`: adds the quantity of item while merging the item and checking for inventory capacity.
+    - `int totalItems()`: returns the total quantity of items in the inventory.
+    - `List<String> listItems()`: returns a list of all unique items in the inventory.
+    int
+    - `avalibleSpace()` : return the reamining capacity of inventiy space.
+    - `void sortInventory(boolean byQuantity)`: sorts the inventory either alphabetically or by quanitity (alphabetically: byQuanitiy = False || by quanitity: byQuantity = True)
+    - `boolean transferItems(GamInventory otherInv, String item, int qty)`: moves the `qty` of `item` to another inventory. Informs player of failure or success.
+
   - **Additional Considerations** (*note*: "I don't know" is an acceptable
     answer for each of the following questions):
     - Would this component be mutable? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes, the contents of the inventory are mutasble since items can be added, removed, and transfered.
     - Would this component rely on any internal classes (e.g., `Map.Pair`)?
       Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes, this component could use a `Map<String, Integer>` pair to track item names and quantities or a `List<String>` for sorting and listing items.
     - Would this component need any enums or constants (e.g.,
       `Program.Instruction`)? Answer and explain:
       - <!-- TODO: provide an argument then delete this comment -->
