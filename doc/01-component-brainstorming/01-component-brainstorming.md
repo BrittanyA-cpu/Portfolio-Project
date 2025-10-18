@@ -2,7 +2,7 @@
 
 - **Name**: Brittany Arias Medina
 - **Dot Number**: ariasmedina.1
-- **Due Date**: 09/19 @ 12:40 PM EST
+- **Due Date**: 10/17 @ 11:59 PM EST
 
 ## Assignment Overview
 
@@ -200,64 +200,85 @@ will likely refine your design to make your implementation easier to use.
     - `List<String> listItems()`: returns a list of all unique items in the inventory.
     int
     - `avalibleSpace()` : return the reamining capacity of inventiy space.
-    - `void sortInventory(boolean byQuantity)`: sorts the inventory either alphabetically or by quanitity (alphabetically: byQuanitiy = False || by quanitity: byQuantity = True)
+    - `void sortInventory(boolean byQuantity)`: sorts the inventory either alphabetically or by quanitity.
     - `boolean transferItems(GamInventory otherInv, String item, int qty)`: moves the `qty` of `item` to another inventory. Informs player of failure or success.
 
   - **Additional Considerations** (*note*: "I don't know" is an acceptable
     answer for each of the following questions):
     - Would this component be mutable? Answer and explain:
-      - Yes, the contents of the inventory are mutasble since items can be added, removed, and transfered.
+      - Yes, the contents of the inventory are mutable since items can be added, removed, and transfered.
     - Would this component rely on any internal classes (e.g., `Map.Pair`)?
       Answer and explain:
       - Yes, this component could use a `Map<String, Integer>` pair to track item names and quantities or a `List<String>` for sorting and listing items.
     - Would this component need any enums or constants (e.g.,
       `Program.Instruction`)? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes, it could use a constant for the max inventory capacity and max stack limits. As well as an enum to determine if the inventory will be sorted by quantity or alphabetically.
     - Can you implement your secondary methods using your kernel methods?
       Answer, explain, and give at least one example:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes the secondary methods can be implemented using kernal methods, an example is removeAll which calls remove until there are no more of that item and addItem which calls insert.
 
-- Component Design #2: <!-- TODO: give component a name then delete this comment -->
+- Component Design #2: Music Playlist Manager
   - **Description**:
-    - <!-- TODO: describe your component then delete this comment -->
+    - Models a playlist manager on a music app, that can make more than one plalist and modify them. The kernal gives functions for storage and getting songs. The secondary interface gives other behaviors such as shuffling and replay.
   - **Kernel Methods**:
-    - <!-- TODO: list kernel methods then delete this comment -->
+    - `void createPlaylist(String name)`: creates an empty playlist with the given name.
+    - `boolean deletePlaylist(String name)`: deletes the given playlist if it exists.
+    - `void  addSong (String playlist, String Song)`: adds a song to the end of a given playlist
+    - `string removeSong(String playlist, int index)`: removes the song at the given
+    index and returns which one was removed from given playlist
+    - `Sequence<String> getPLaylists()`: returns names of all playlists.
+    - `int playlistSize(String playlist)`: returns the number of songs in the paylist
+    -`int clearPLaylist(String playlist)`: clears all songs from the playlist
   - **Secondary Methods**:
-    - <!-- TODO: list secondary methods then delete this comment -->
+    - `void playNext(String playlist)`: plays the next song in a playlist.
+    -`void shuffle(String playlist)`: shuffles the song order in the playlist.
+    -`boolean hasSong(String playlist; String song)`: checks to see if the given song is in the given playlist.
+    -`void moveSong(String playlist, int Currentindex, int newIndex)`: moves the order of a song in a given playlist.
+    -`Sequence<String> listSongs(String playlist)`: returns a copy of all the songs in the current order of the playlist
+    -`void renamePlaylist(String oldPlaylistName, String newNaame)`: chnages the name of a playlist.
+    - `int totalSongs()`: returns the number of songs in total, across all playlists.
+    - `int indexOf(String playlist, String song)`: returns the index of the song in the playlist, returns -1 if not found in playlist.
+      - **Additional Considerations** (*note*: "I don't know" is an acceptable
+    answer for each of the following questions):
+    - Would this component be mutable? Answer and explain:
+      - Yes this comonement would be mutable since it changes whenever a song is added or removed, or when a playlist is deleted.
+    - Would this component rely on any internal classes (e.g., `Map.Pair`)?
+      Answer and explain:
+      - Yes this component may rely on internal class such as a map to keep track of the songs within a playlist.
+    - Would this component need any enums or constants (e.g.,
+      `Program.Instruction`)? Answer and explain:
+      - No I dont thing this component would need any emums or constants, since sorting is done by the "user" rather than be predetermined.
+    - Can you implement your secondary methods using your kernel methods?
+      Answer, explain, and give at least one example:
+      - Yes you can implements the secondsary methods with the kernals, such as totalsongs using playlistSize.
+
+- Component Design #3: Password Manager
+  - **Description**:
+    - Models a system that stores usernames with passwords. The kernal methos handles storage and retreval, the secondary method handles other uses like creating accounts and updating passwords.
+  - **Kernel Methods**:
+    - `void store(String username, String password)`: Stores the password for the username.
+    - `String get(String username)`: returns the stored password for the username.
+    - `String remove(username)`: removes the account and returns the password for it.
+    - `Set<String> usernames()`: returns all the usernames in system.
+    - `void clear()`: removes all accounts, clears all usernames and passwords.
+  - **Secondary Methods**:
+    - `void createAccount(String username, String passwords)`: creates a new account, if the username doesn't already exist.
+    - `void login(String username, String password)`: checks the username and password and checks if they match with accounts.
+    - `void updatePassowrd(String username, String newPassword)`: Updates the password for an account that already exists.
+    - `void totalAccouts()`: prints the number of current accounts.
   - **Additional Considerations** (*note*: "I don't know" is an acceptable
     answer for each of the following questions):
     - Would this component be mutable? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes this component is mutable since you can add, remove, and update accounts.
     - Would this component rely on any internal classes (e.g., `Map.Pair`)?
       Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes, a Map<String><String> could be used to keep track of the usernames and passwords.
     - Would this component need any enums or constants (e.g.,
       `Program.Instruction`)? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - No there are no enums or constants needed for the component.
     - Can you implement your secondary methods using your kernel methods?
       Answer, explain, and give at least one example:
-      - <!-- TODO: provide an argument then delete this comment -->
-
-- Component Design #3: <!-- TODO: give component a name then delete this comment -->
-  - **Description**:
-    - <!-- TODO: describe your component then delete this comment -->
-  - **Kernel Methods**:
-    - <!-- TODO: list kernel methods then delete this comment -->
-  - **Secondary Methods**:
-    - <!-- TODO: list secondary methods then delete this comment -->
-  - **Additional Considerations** (*note*: "I don't know" is an acceptable
-    answer for each of the following questions):
-    - Would this component be mutable? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
-    - Would this component rely on any internal classes (e.g., `Map.Pair`)?
-      Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
-    - Would this component need any enums or constants (e.g.,
-      `Program.Instruction`)? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
-    - Can you implement your secondary methods using your kernel methods?
-      Answer, explain, and give at least one example:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes, totalAccounts() can use usernames() to count how many total accounts there are, since there will be no duplicate usernames.
 
 ## Post-Assignment
 
