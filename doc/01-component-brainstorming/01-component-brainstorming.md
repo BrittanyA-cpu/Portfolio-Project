@@ -234,7 +234,7 @@ will likely refine your design to make your implementation easier to use.
     -`void shuffle(String playlist)`: shuffles the song order in the playlist.
     -`boolean hasSong(String playlist; String song)`: checks to see if the given song is in the given playlist.
     -`void moveSong(String playlist, int Currentindex, int newIndex)`: moves the order of a song in a given playlist.
-    -`Sequence<String> listSongs(String playlist)`: returns a copy of all the songs in the current order of the playlist
+    -`Sequence<String> listSongs(String playlist)`: returns a copy of all the songs in the current order of the playlist.
     -`void renamePlaylist(String oldPlaylistName, String newNaame)`: chnages the name of a playlist.
     - `int totalSongs()`: returns the number of songs in total, across all playlists.
     - `int indexOf(String playlist, String song)`: returns the index of the song in the playlist, returns -1 if not found in playlist.

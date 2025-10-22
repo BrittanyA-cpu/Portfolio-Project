@@ -13,3 +13,14 @@ the following form: 2025.10.17.
 - Designed a Game inventory component
 - Designed a Music Playlist Manager component
 - Designed a Password Manager component.
+
+# 2025.10.17
+
+### Added
+
+- Proof of concept implementation for Music Playlist Manager component.
+
+### Changed
+
+- Used sequences instead of lists.
+- Changes listSongs to displayPlaylist.
