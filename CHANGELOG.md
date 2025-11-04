@@ -24,3 +24,14 @@ the following form: 2025.10.17.
 
 - Used sequences instead of lists.
 - Changes listSongs to displayPlaylist.
+
+# 2025.11.03
+
+### Added
+
+- Designed kernel and enhanced interfaces for Password Manager component
+
+### Updated
+
+- Will be using PasswordManager componenet moving forward.
+- Changed design to include hashing passwords when storing them.
