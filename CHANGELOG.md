@@ -41,3 +41,9 @@ the following form: 2025.10.17.
 ### Added
 
 - Designed abstract class for Password Manager component
+- Added Contains method to kernal
+- added hash password method to kernal.
+
+### Updated
+
+- Added contains and hashPassword as kernel methods since implementation of secondary methods relies on it.
