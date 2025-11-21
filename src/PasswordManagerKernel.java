@@ -4,7 +4,7 @@ import components.set.Set;
 import components.standard.Standard;
 
 /**
- * {@code PosswordManagerKernel} a representation of a password storing system
+ * {@code PasswordManagerKernel} a representation of a password storing system
  * that connects usernames to hashed passwords.
  *
  *
@@ -38,14 +38,14 @@ public interface PasswordManagerKernel extends Standard<PasswordManager> {
      *
      * @param username
      *            the username whose password is returned
-     * @required username is in DOMAIN(this)
+     * @requires username is in DOMAIN(this)
      * @ensures get = this[username]
      * @return the hashed password for the given username
      */
     String get(String username);
 
     /**
-     * Removes the account for the given username and returns it's stored
+     * Removes the account for the given username and returns its stored
      * password.
      *
      * @param username
@@ -65,13 +65,26 @@ public interface PasswordManagerKernel extends Standard<PasswordManager> {
      */
     Set<String> usernames();
 
-    /*
-     * Clears all the stored accounts and passwords.
+    /**
+     * Returns true if the given username exists in the system, false otherwise.
      *
-     * @updates this
-     *
-     * @ensures this = {}
+     * @param username
+     *            the given username to check
+     * @requires username != null
+     * @return True or False
      */
-    @Override
-    void clear();
+    boolean contains(String username);
+
+    /*
+     * Hashed the given password.
+     *
+     * @param the given password
+     *
+     * @requires password != null
+     *
+     * @ensures hashPassword = hashed version of given password
+     *
+     * @return hashed password string
+     */
+    String hashPassword(String password);
 }

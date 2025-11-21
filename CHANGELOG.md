@@ -35,3 +35,9 @@ the following form: 2025.10.17.
 
 - Will be using PasswordManager componenet moving forward.
 - Changed design to include hashing passwords when storing them.
+
+## 2025.11.18
+
+### Added
+
+- Designed abstract class for Password Manager component
