@@ -36,7 +36,7 @@ the following form: 2025.10.17.
 - Will be using PasswordManager componenet moving forward.
 - Changed design to include hashing passwords when storing them.
 
-## 2025.11.18
+## 2025.11.21
 
 ### Added
 
@@ -47,3 +47,9 @@ the following form: 2025.10.17.
 ### Updated
 
 - Added contains and hashPassword as kernel methods since implementation of secondary methods relies on it.
+
+## 2025.11.21
+
+### Added
+
+- Designed kernel implementation for Password Manager component

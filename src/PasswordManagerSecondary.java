@@ -8,6 +8,9 @@ import components.set.Set;
 
 public abstract class PasswordManagerSecondary implements PasswordManager {
 
+    /**
+     * Secondary Methods.
+     */
     @Override
     public boolean hasUser(String username) {
         assert username != null : "Violation of: username is not null";
@@ -72,6 +75,10 @@ public abstract class PasswordManagerSecondary implements PasswordManager {
     public void totalAccounts() {
         System.out.println("Total account:" + this.size());
     }
+
+    /**
+     * Object methods.
+     */
 
     @Override
     public String toString() {
