@@ -24,14 +24,16 @@ public abstract class PasswordManagerSecondary implements PasswordManager {
         assert username != null
                 && password != null : "Violation of: username and password are not null";
 
-        if (!this.contains(username)) {
-            return false;
+        boolean result = false;
+
+        if (this.contains(username)) {
+            String hashedPassword = this.hashPassword(password);
+            for (String p : this.get(username)) {
+                result = result || p.equals(hashedPassword);
+            }
         }
 
-        String storedPassword = this.get(username);
-        String givenPassword = this.hashPassword(password);
-
-        return storedPassword.equals(givenPassword);
+        return result;
     }
 
     @Override
@@ -48,7 +50,7 @@ public abstract class PasswordManagerSecondary implements PasswordManager {
                 username) : "Violation of: username not already in DOMAIN(this)";
 
         if (!this.contains(username)) {
-            this.store(username, this.hashPassword(password));
+            this.store(username,password);
         }
     }
 
@@ -61,14 +63,25 @@ public abstract class PasswordManagerSecondary implements PasswordManager {
     }
 
     @Override
-    public void updatePassword(String username, String newPassword) {
-        assert username != null
-                && newPassword != null : "Violation of: username and newPassword are not null";
-        assert this
-                .contains(username) : "Violation of: username in DOMAIN(this)";
+    public void updatePassword(String username, String oldPassword,
+            String newPassword) {
+        assert username != null && oldPassword != null && newPassword != null;
+        assert this.contains(username) : "username must exist";
+
+        Set<String> passwords = this.get(username);
+        String oldHash = this.hashPassword(oldPassword);
+        String newHash = this.hashPassword(newPassword);
+
+        assert passwords.contains(
+                oldHash) : "Violation of: oldPassword must exist for username";
+
+        passwords.remove(oldHash);
+        passwords.add(newHash);
 
         this.remove(username);
-        this.store(username, this.hashPassword(newPassword));
+        for (String p : passwords) {
+            this.store(username, p);
+        }
     }
 
     @Override
@@ -82,8 +95,9 @@ public abstract class PasswordManagerSecondary implements PasswordManager {
 
     @Override
     public String toString() {
-        return "Password Manager with" + this.size() + "accounts: "
+        return "Password Manager with " + this.size() + " accounts: "
                 + this.usernames();
+
     }
 
     @Override

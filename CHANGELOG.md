@@ -53,3 +53,20 @@ the following form: 2025.10.17.
 ### Added
 
 - Designed kernel implementation for Password Manager component
+
+## 2025.12.10
+
+### Added
+
+- Designed test suite for PasswordManager component
+- Designed two different use cases for PasswordManager component
+
+### Updated
+
+- Changed design to include convention and correspondence in kernel implementation.
+- Changed representation so it was less limiting.
+- Added transfer from and new instance to kernel implementation.
+- Changes in Kernel to match the new representation, where there can be one or more passwords.
+- Changes in PasswordManager1L to match new representation.
+- Changes in PasswordManager to match new representation.
+- Changes in PasswordaManagerSecondary to match new representation.

@@ -5,12 +5,13 @@ package components.passwordmanager;
  *
  *
  * @mathsubtypes <pre>
- * PasswordsManager is modeled as
- *  (accounts: finite set of (username: string, passwordHash: string))
+ * PasswordManager is modeled as
+ *   (accounts: finite set of (username: string, passwordHashes: set of string))
  * </pre>
  *
  * @mathmodel <pre>
- *  Each username is unique and each password is stored as a hash.
+ * Each username is unique and each password is stored as a hash.
+ * Each username may have multiple passwords associated with it.
  * </pre>
  **/
 
@@ -38,9 +39,10 @@ public interface PasswordManager extends PasswordManagerKernel {
      * @requires username != null and password != null
      *
      * @ensures isVerified = (username is in DOMAIN(this) and this[username] =
-     *          hashed(password))
+     *          hashedPasswords(password))
      *
-     * @return true if the inputs match, false if not
+     * @return true if the input matches on eof the stores passwords, false if
+     *         not
      */
     boolean verify(String username, String password);
 
@@ -63,7 +65,8 @@ public interface PasswordManager extends PasswordManagerKernel {
      * @requires username != null and password != null and username not in
      *           DOMAIN(this)
      *
-     * @ensures username is added to DOMAIN(this) with its hashed password
+     * @ensures username is added to DOMAIN(this) with a set containing its
+     *          hashed passwords
      */
     void createAccount(String username, String password);
 
@@ -87,19 +90,22 @@ public interface PasswordManager extends PasswordManagerKernel {
     boolean login(String username, String password);
 
     /**
-     * Updates the password for an already existing account.
+     * Replaces a specific old password with a new password for an existing
+     * account.
      *
      * @param username
-     *            the account username whose password will be updated
+     *            the account username
+     * @param oldPassword
+     *            the password to be replaced
      * @param newPassword
-     *            the new password given
+     *            the new password
      * @updates this
-     *
-     * @required username in DOMAIN(this) and newPassword != null
-     *
-     * @ensures this[username] = hashed[newPassword]
+     * @requires username in DOMAIN(this) and oldPassword is in this[username]
+     *           and newPassword != null
+     * @ensures oldPassword is replaced by newPassword in this[username]
      */
-    void updatePassword(String username, String newPassword);
+    void updatePassword(String username, String oldPassword,
+            String newPassword);
 
     /**
      * Prints the total under of accounts stored. Calls {@code size}.
@@ -107,5 +113,7 @@ public interface PasswordManager extends PasswordManagerKernel {
      * @ensures output = "Total accounts: " + |DOMAIN(this)|
      */
     void totalAccounts();
+
+    PasswordManager createNewRep();
 
 }

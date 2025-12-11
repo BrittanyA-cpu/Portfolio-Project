@@ -9,8 +9,8 @@ import components.standard.Standard;
  *
  *
  * @mathsubtypes <pre>
- * PasswordsManager is modeled as
- *  (accounts: finite set of (username: string, passwordHash: string))
+ * PasswordManager is modeled as
+ *  (accounts: finite set of (username: string, passwordHashes: set of strings))
  * </pre>
  *
  * @mathmodel <pre>
@@ -21,41 +21,43 @@ public interface PasswordManagerKernel extends Standard<PasswordManager> {
 
     /**
      * Stores the password for a given username. Passwords should be hashed
-     * before being stored.
+     * before being stored. If the username already exists, the password is
+     * added to the set of existing passwords.
      *
      * @param username
      *            the username string given to store
-     * @param passwords
+     * @param password
      *            the password (as given) for the username
      * @updates this
      * @requires username and password are not null
-     * @ensures get(username) = hashed(password)
+     * @ensures get(username) = hashedPassword(password)
      */
     void store(String username, String password);
 
     /**
-     * Returns the stored password (hashed) for the given username.
+     * Returns all of the stored passwords (hashed) for the given username.
      *
      * @param username
-     *            the username whose password is returned
-     * @requires username is in DOMAIN(this)
-     * @ensures get = this[username]
-     * @return the hashed password for the given username
+     *            the username whose passwords are returned
+     * @requires username is in DOMAIN(this) and there is at least one password
+     *           stored for username
+     * @ensures get = all of the stored passwords
+     * @return a set if hashed passwords for the given username
      */
-    String get(String username);
+    Set<String> get(String username);
 
     /**
-     * Removes the account for the given username and returns its stored
-     * password.
+     * Removes the account for the given username and returns one of its stored
+     * passwords.
      *
      * @param username
      *            the username that is removed
      * @updates this
      * @requires username is in DOMAIN(this)
      * @ensures username is removed from DOMAIN(this)
-     * @return the password hash for the removed username
+     * @return a set of all passwords hashes for the removed username
      */
-    String remove(String username);
+    Set<String> remove(String username);
 
     /**
      * Returns all the usernames currently stored.
@@ -71,7 +73,7 @@ public interface PasswordManagerKernel extends Standard<PasswordManager> {
      * @param username
      *            the given username to check
      * @requires username != null
-     * @return True or False
+     * @return True if username exists, or False if it does not exist
      */
     boolean contains(String username);
 
